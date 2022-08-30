@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->foreignId('department_id')->constraint()->nullable();  
+            $table->foreignId('department_id')->constrained()->nullable();  
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
