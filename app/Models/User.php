@@ -10,23 +10,30 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable; 
 
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
-    }
+ 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'department_id',
+        'name', 
+        'email', 
         'password',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class,'likes')->withPivot('created_at');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

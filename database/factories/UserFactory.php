@@ -2,14 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Department;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash; 
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
     /**
@@ -22,16 +18,15 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->safeEmail(), 
+            'password' => Hash::make('password'), 
+            'email_verified_at' => now()
          ];
     }
 
-     
-    public function department(){     
-        return $this->state(fn (array $attributes) => [
-            'department_id' => Department::inRandomOrder()->first()->id,
-        ]);
-    }
   
+
+     
+ 
    
     
 }

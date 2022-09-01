@@ -16,11 +16,13 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        Department::factory(10)->create(); 
-        
-        User::factory()->count(6) 
-        ->department(['department_id' =>2]) 
+    { 
+        User::factory()->count(6)
+        ->create(); 
+
+
+        User::factory()->count(4)
+        ->hasPosts(3)
         ->create(); 
     }
 }

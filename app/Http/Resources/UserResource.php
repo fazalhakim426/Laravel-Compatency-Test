@@ -17,11 +17,11 @@ class UserResource extends JsonResource
         return [
             'id'            =>  $this->id,
             'name'          =>  $this->name,
-            'email'         =>  $this->email,
-            'department'    =>  new DepartmentResource($this->department),
+            'email'         =>  $this->email, 
             'created_at'    =>  $this->created_at,
             'updated_at'    =>  $this->updated_at,
             'deleted_at'    =>  $this->deleted_at,
+            'posts'         => $this->whenLoaded('posts'),
         ];
     }
 }
