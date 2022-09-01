@@ -13,7 +13,7 @@ Route::apiResource('user',  UserController::class)->only(['index', 'store']);
  Route::group([
         'middleware' => ['auth:sanctum'], 
         'prefix' => 'auth' 
-      ], function ($router) { 
+      ], function () { 
       
         Route::get('like-clicked/{post}',[LikeController::class,'like_clicked']);
         Route::apiResource('post',PostController::class)->only(['destroy','store']);

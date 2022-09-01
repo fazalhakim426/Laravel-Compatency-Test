@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             Post::where('created_at', '<=', Carbon::now()->subDays(15))->delete();
-        })->everyMinute();
+        })->everyDay();
     }
 
 

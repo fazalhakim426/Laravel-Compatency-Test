@@ -10,8 +10,7 @@ class UserController extends Controller
 {
     
     public function index()
-    {
-
+    { 
         return response()->json(['user'=> UserResource::collection(User::all())]); 
     }
 
